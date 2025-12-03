@@ -1,0 +1,521 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Certificaciones de Fernando A. Quispe - 20 certificados en gestión de proyectos, Power BI, Excel, Python, Django y más.">
+    <meta name="keywords" content="Certificados, Power BI, Excel, Python, Django, Gestión Proyectos, UNI, Coursera">
+    <meta name="author" content="Fernando A. Quispe">
+    <title>Certificaciones - Fernando A. Quispe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card-img {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cert-card-img:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+        }
+
+        .cert-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card-img:hover .cert-img-container img {
+            transform: scale(1.05);
+        }
+
+        .cert-card-info {
+            padding: 1rem;
+        }
+
+        .cert-card-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .cert-card-info p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-year-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .cert-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .cert-modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .cert-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .cert-modal-close:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .cert-modal-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: translate(-50%, -50%) scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/fotos/logo.png" alt="Fernando A. Quispe" class="brand-logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="acerca.html" class="nav-link">Sobre Mí</a></li>
+                <li><a href="certificados.html" class="nav-link active">Certificaciones</a></li>
+                <li><a href="proyectos.html" class="nav-link">Proyectos</a></li>
+                <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Certificates Section -->
+    <section id="certificados" class="education" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Formación</span>
+                <h1 class="section-title">Mis Certificaciones (20)</h1>
+                <p class="section-description">Haz clic en cualquier certificado para verlo en tamaño completo</p>
+            </div>
+
+            <!-- Universidad -->
+            <h3 style="color: var(--primary-color); margin: 2rem 0 1rem; font-size: 1.5rem;">📘 Universidad Nacional de
+                Ingeniería</h3>
+            <div class="certs-grid">
+                <div class="cert-card-img" data-cert="Power BI Básico">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/universidad/C_1_UNI_2024_POWER BI BASICO.png"
+                            alt="Power BI Básico" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Power BI Básico</h4>
+                        <p>Universidad Nacional de Ingeniería (UNI)</p>
+                        <span class="cert-year-badge">2024</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Power BI Intermedio">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/universidad/C_2_UNI_2024_POWER BI INTERMEDIO.png"
+                            alt="Power BI Intermedio" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Power BI Intermedio</h4>
+                        <p>Universidad Nacional de Ingeniería (UNI)</p>
+                        <span class="cert-year-badge">2024</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Fundamentos de Proyectos de Inversión Pública">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/universidad/C_3_UNI_2024_FUNDAMENTOS DE PROYECTOS DE INVERSIÓN PÚBLICA.png"
+                            alt="Fundamentos" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Fundamentos de Proyectos de Inversión Pública</h4>
+                        <p>Universidad Nacional de Ingeniería (UNI)</p>
+                        <span class="cert-year-badge">2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cursos -->
+            <h3 style="color: var(--primary-color); margin: 3rem 0 1rem; font-size: 1.5rem;">💼 Cursos Especializados
+            </h3>
+            <div class="certs-grid">
+                <div class="cert-card-img" data-cert="Excel Advanced">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/12_C_Certificado_Excel_Advanced_Coursera_Macquarie_2025.png"
+                            alt="Excel Advanced" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Excel Advanced</h4>
+                        <p>Macquarie University – Coursera</p>
+                        <span class="cert-year-badge">2025</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Excel Intermediate II">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/11_C_Certificado_Excel_Intermediate_II_Coursera_Macquarie_2025.png"
+                            alt="Excel Intermediate" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Excel Intermediate II</h4>
+                        <p>Macquarie University – Coursera</p>
+                        <span class="cert-year-badge">2025</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Programa Ferreycorp">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/10_C_Programa Ferreycorp para la Empleabilidad_Asociación ferreycorp_Surco Peru.png"
+                            alt="Ferreycorp" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Programa Ferreycorp para la Empleabilidad</h4>
+                        <p>Asociación Ferreycorp</p>
+                        <span class="cert-year-badge">2024</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Python y Django">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/8_C_Curso de especializacion Especialización en Desarrollo con Python y DJango_ UPAL y NETZUN.png"
+                            alt="Python Django" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Especialización en Desarrollo con Python y Django</h4>
+                        <p>UPAL & Netzun</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Excel UPAL">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/9_C_Curso de especializacion Microsof Excel _ UPAL y NETZUN.png"
+                            alt="Excel UPAL" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Especialización Microsoft Excel</h4>
+                        <p>UPAL & Netzun</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Excel Básico">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/6_C_Curso de especializacion Excel básico_Netzun&Uni. Peruana Alemana.png"
+                            alt="Excel Básico" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Excel Básico</h4>
+                        <p>Netzun & Universidad Peruana Alemana</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Cultura Fiscal">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/7_C_Certificado de curso Básico de Cultura Fiscal_ Sunal.png"
+                            alt="Cultura Fiscal" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Cultura Fiscal Básico</h4>
+                        <p>SUNAT</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Instituciones Educativas">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/5_C_Certificado_del_curso_ANÁLISIS_Y_DISEÑO_DE_LAS_INSTITUCIONES EDUCATIVAS_Clg. de Ingenieros Piura.png"
+                            alt="Educativas" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Análisis y Diseño de Instituciones Educativas</h4>
+                        <p>Colegio de Ingenieros de Piura</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="LALA">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/3_C_Certificado de curso de Liderazgo Internacional Latinoamérica_LALA_Academy_Colombia.png"
+                            alt="LALA" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Liderazgo Internacional Latinoamérica (LALA)</h4>
+                        <p>LALA Academy – Colombia</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Plan de Negocios">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/4_C_Certificado del curso Plan de Negocios_Fundacion Romero.png"
+                            alt="Plan Negocios" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Plan de Negocios</h4>
+                        <p>Fundación Romero</p>
+                        <span class="cert-year-badge">2022</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Presupuesto y Ahorro">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/2_C_Certificado de curso Presupuesto y Ahorro_ BCP-ABC.png"
+                            alt="Presupuesto" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Presupuesto y Ahorro</h4>
+                        <p>BCP-ABC</p>
+                        <span class="cert-year-badge">2022</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Excel Intermedio">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/cursos/1_C_Certificado de curso Excel intermedio_UTP.png"
+                            alt="Excel Intermedio" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Excel Intermedio</h4>
+                        <p>UTP</p>
+                        <span class="cert-year-badge">2021</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conferencias -->
+            <h3 style="color: var(--primary-color); margin: 3rem 0 1rem; font-size: 1.5rem;">🎤 Conferencias y Talleres
+            </h3>
+            <div class="certs-grid">
+                <div class="cert-card-img" data-cert="Gestión del Cambio">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/conferencias/3_A_Certificado de asistencia Gestión del cambio a través del liderazgo_Cibertec.png"
+                            alt="Gestión Cambio" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Gestión del Cambio a través del Liderazgo</h4>
+                        <p>Cibertec</p>
+                        <span class="cert-year-badge">2023</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="AFI School">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/conferencias/2_A_AFI SCHOOL Certificado de Asistencia 21072022-21.png"
+                            alt="AFI School" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>AFI School - Certificado de Asistencia</h4>
+                        <p>AFI</p>
+                        <span class="cert-year-badge">2022</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="AFP">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/conferencias/1_A_Certificado de asistencia en taller de innovación del ahorro AFP.png"
+                            alt="AFP" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Taller de Innovación del Ahorro AFP</h4>
+                        <p>AFP</p>
+                        <span class="cert-year-badge">2022</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personales -->
+            <h3 style="color: var(--primary-color); margin: 3rem 0 1rem; font-size: 1.5rem;">📄 Documentos Laborales
+            </h3>
+            <div class="certs-grid">
+                <div class="cert-card-img" data-cert="CERTIJOVEN">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/personales/1_P_CERTIJOVEN - CERTIFICADO ÚNICO LABORAL PARA JÓVENES.png"
+                            alt="CERTIJOVEN" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>CERTIJOVEN - Certificado Único Laboral</h4>
+                        <p>Ministerio de Trabajo</p>
+                        <span class="cert-year-badge">✓</span>
+                    </div>
+                </div>
+                <div class="cert-card-img" data-cert="Antecedentes Penales">
+                    <div class="cert-img-container">
+                        <img src="assets/certificados/personales/2_P_Certificado de antecedentes Penales 2019.png"
+                            alt="Antecedentes" loading="lazy">
+                    </div>
+                    <div class="cert-card-info">
+                        <h4>Certificado de Antecedentes Penales</h4>
+                        <p>Gobierno del Perú</p>
+                        <span class="cert-year-badge">2019</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="proyectos.html" class="btn btn-primary">Ver Proyectos</a>
+                <a href="contacto.html" class="btn btn-secondary" style="margin-left: 1rem;">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/fotos/logo.png" alt="Fernando A. Quispe" class="footer-logo">
+                    <p>Construyendo soluciones con código y creatividad</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Inicio</a>
+                    <a href="acerca.html">Sobre Mí</a>
+                    <a href="certificados.html">Certificaciones</a>
+                    <a href="proyectos.html">Proyectos</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fernando A. Quispe. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="cert-modal">
+        <span class="cert-modal-close">&times;</span>
+        <img class="cert-modal-content" id="certImage">
+        <div class="cert-modal-caption" id="certCaption"></div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const certCards = document.querySelectorAll('.cert-card-img');
+            const modal = document.getElementById('certModal');
+            const modalImg = document.getElementById('certImage');
+            const modalCaption = document.getElementById('certCaption');
+            const closeBtn = document.querySelector('.cert-modal-close');
+
+            certCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const img = this.querySelector('img');
+                    const title = this.getAttribute('data-cert');
+                    modal.style.display = 'block';
+                    modalImg.src = img.src;
+                    modalCaption.textContent = title;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
